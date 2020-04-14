@@ -391,7 +391,7 @@ if(SpeechRecognition) {
       else if((timiStatus == 'waiting') && transcript.trim().includes("dobar") && transcript.trim().includes("dan")) {
         timiSay("tiiiIIIIIiiiiimmy tiiiiiimmy tiiiimmy")
       }
-      else if((timiStatus == 'waiting') && (transcript.trim().indexOf("šta") > 0) && (transcript.trim().indexOf("radiš") > 0)) {
+      else if((timiStatus == 'waiting') && transcript.trim().indexOf("šta") && transcript.trim().indexOf("radiš")) {
         timiSay("tiiiIIIIIiiiiimmy tiiiiiimmy tiiiimmy")
       }
       else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koliko") && transcript.trim().includes("je") && transcript.trim().includes("sati")) {
