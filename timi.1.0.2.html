@@ -388,28 +388,33 @@ if(SpeechRecognition) {
         timiStatus = "waiting";
         timiSay("timmiieee")
       }
-      else if((timiStatus == 'waiting') && transcript.trim().includes("dobar") && transcript.trim().includes("dan")) {
+      else if((timiStatus == 'waiting') && transcript.trim().indexOf("dobar") && transcript.trim().indexOf("dan")) {
         timiSay("tiiiIIIIIiiiiimmy tiiiiiimmy tiiiimmy")
       }
       else if((timiStatus == 'waiting') && transcript.trim().indexOf("šta") && transcript.trim().indexOf("radiš")) {
-        timiSay("tiiiIIIIIiiiiimmy tiiiiiimmy tiiiimmy")
+        if (timiStatus == "waiting"){
+          timiSay("timmiieee aoiblueoyeeooeo timmiieee")
+        } 
+        else if(timiStatus == "searching"){
+          timiSay("timmy find things for master. What does master wish from timmy?");
+        }
       }
-      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koliko") && transcript.trim().includes("je") && transcript.trim().includes("sati")) {
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().incluindexOfdes("koliko") && transcript.trim().indexOf("je") && transcript.trim().indexOf("sati")) {
         timiSay(timeTimi());
       }
-      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koji") && transcript.trim().includes("je") && transcript.trim().includes("datum")) {        
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().indexOf("koji") && transcript.trim().indexOf("je") && transcript.trim().indexOf("datum")) {        
         timiSay(dateTimi());
       }
-      else if((timiStatus == 'waiting') && transcript.trim().includes("ispričaj") && transcript.trim().includes("vic")) {
+      else if((timiStatus == 'waiting') && transcript.trim().indexOf("ispričaj") && transcript.trim().indexOf("vic")) {
         timiSay("Job interviewer: And where would you see yourself in five years’ time Mr. Jeffries? Mr. Jeffries: Personally I believe my biggest weakness is in listening.")
       }
-      else if((timiStatus == 'waiting') && (transcript.trim().includes("kakvo je vreme") || transcript.trim().includes("kako je napolju") || transcript.trim().includes("kakvo je vreme napolju"))) {
+      else if((timiStatus == 'waiting') && (transcript.trim().indexOf("kakvo") || transcript.trim().includes("kako")) && (transcript.trim().indexOf("vreme") || transcript.trim().includes("napolju"))) {
         getWeather();
       }
-      else if((timiStatus == 'waiting') && transcript.trim().includes("promeni")  && transcript.trim().includes("grad")) {
+      else if((timiStatus == 'waiting') && transcript.trim().indexOf("promeni")  && transcript.trim().indexOf("grad")) {
         setCity(searchFormInput.value);
       } 
-      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("pauziraj")  && transcript.trim().includes("glasovne") && transcript.trim().includes("komande")) {
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().indexOf("pauziraj")  && transcript.trim().indexOf("glasovne") && transcript.trim().indexOf("komande")) {
         timiSay("timmiieee")
         timiStatus = 'not-waiting';
       } 
