@@ -396,7 +396,7 @@ if(SpeechRecognition) {
       else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koji") && transcript.trim().includes("je") && transcript.trim().includes("datum")) {        
         timiSay(dateTimi());
       }
-      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("šta") && transcript.trim().includes("radiš")) {
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("šta radiš")) {
         if (timiStatus == "waiting"){
           timiSay("timmiieee aoiblueoyeeooeo timmiieee")
         } 
