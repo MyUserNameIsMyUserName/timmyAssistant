@@ -391,14 +391,14 @@ if(SpeechRecognition) {
       else if((timiStatus == 'waiting') && transcript.trim().includes("dobar") && transcript.trim().includes("dan")) {
         timiSay("tiiiIIIIIiiiiimmy tiiiiiimmy tiiiimmy")
       }
+      else if((timiStatus == 'waiting') && transcript.trim().includes("šta radiš")) {
+        timiSay("tiiiIIIIIiiiiimmy tiiiiiimmy tiiiimmy")
+      }
       else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koliko") && transcript.trim().includes("je") && transcript.trim().includes("sati")) {
         timiSay(timeTimi());
       }
       else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koji") && transcript.trim().includes("je") && transcript.trim().includes("datum")) {        
         timiSay(dateTimi());
-      }
-      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("šta radiš")) {
-          timiSay("timmiieee aoiblueoyeeooeo timmiieee")
       }
       else if((timiStatus == 'waiting') && transcript.trim().includes("ispričaj") && transcript.trim().includes("vic")) {
         timiSay("Job interviewer: And where would you see yourself in five years’ time Mr. Jeffries? Mr. Jeffries: Personally I believe my biggest weakness is in listening.")
