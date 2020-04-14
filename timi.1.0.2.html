@@ -391,7 +391,13 @@ if(SpeechRecognition) {
       else if((timiStatus == 'waiting') && transcript.trim().includes("dobar") && transcript.trim().includes("dan")) {
         timiSay("tiiiIIIIIiiiiimmy tiiiiiimmy tiiiimmy")
       }
-      else if((timiStatus == 'waiting') && transcript.trim().includes("šta") && transcript.trim().includes("radiš")) {
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koliko") && transcript.trim().includes("je") && transcript.trim().includes("sati")) {
+        timiSay(timeTimi());
+      }
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koji") && transcript.trim().includes("je") && transcript.trim().includes("datum")) {        
+        timiSay(dateTimi());
+      }
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("šta") && transcript.trim().includes("radiš")) {
         if (timiStatus == "waiting"){
           timiSay("timmiieee aoiblueoyeeooeo timmiieee")
         } 
@@ -399,16 +405,10 @@ if(SpeechRecognition) {
           timiSay("timmy find things for master. What does master wish from timmy?");
         }
       }
-      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koliko") && transcript.trim().includes("je") && transcript.trim().includes("sati")) {
-        timiSay(timeTimi());
-      }
-      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koji") && transcript.trim().includes("je") && transcript.trim().includes("datum")) {        
-        timiSay(dateTimi());
-      }
       else if((timiStatus == 'waiting') && transcript.trim().includes("ispričaj") && transcript.trim().includes("vic")) {
         timiSay("Job interviewer: And where would you see yourself in five years’ time Mr. Jeffries? Mr. Jeffries: Personally I believe my biggest weakness is in listening.")
       }
-      else if((timiStatus == 'waiting') && (transcript.trim().includes("kakvo") || transcript.trim().includes("kako")) && (transcript.trim().includes("vreme") || transcript.trim().includes("napolju"))) {
+      else if((timiStatus == 'waiting') && (transcript.trim().includes("kakvo je vreme") || transcript.trim().includes("kako je napolju") || transcript.trim().includes("kakvo je vreme napolju"))) {
         getWeather();
       }
       else if((timiStatus == 'waiting') && transcript.trim().includes("promeni")  && transcript.trim().includes("grad")) {
