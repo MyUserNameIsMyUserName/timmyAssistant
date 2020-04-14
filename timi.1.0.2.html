@@ -388,10 +388,10 @@ if(SpeechRecognition) {
         timiStatus = "waiting";
         timiSay("timmiieee")
       }
-      else if((timiStatus == 'waiting') && transcript.trim().indexOf("dobar") && transcript.trim().indexOf("dan")) {
+      else if((timiStatus == 'waiting') && (transcript.trim().indexOf("dobar") > -1) && (transcript.trim().indexOf("dan") > -1)) {
         timiSay("tiiiIIIIIiiiiimmy tiiiiiimmy tiiiimmy")
       }
-      else if((timiStatus == 'waiting') && transcript.trim().indexOf("šta") && transcript.trim().indexOf("radiš")) {
+      else if((timiStatus == 'waiting') && (transcript.trim().indexOf("šta") > -1) && (transcript.trim().indexOf("radiš") > -1)) {
         if (timiStatus == "waiting"){
           timiSay("timmiieee aoiblueoyeeooeo timmiieee")
         } 
