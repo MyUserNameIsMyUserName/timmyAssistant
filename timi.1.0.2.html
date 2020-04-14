@@ -399,22 +399,22 @@ if(SpeechRecognition) {
           timiSay("timmy find things for master. What does master wish from timmy?");
         }
       }
-      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().indexOf("koliko") && transcript.trim().indexOf("je") && transcript.trim().indexOf("sati")) {
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koliko") && transcript.trim().includes("je") && transcript.trim().includes("sati")) {
         timiSay(timeTimi());
       }
-      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().indexOf("koji") && transcript.trim().indexOf("je") && transcript.trim().indexOf("datum")) {        
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koji") && transcript.trim().includes("je") && transcript.trim().includes("datum")) {        
         timiSay(dateTimi());
       }
-      else if((timiStatus == 'waiting') && transcript.trim().indexOf("ispričaj") && transcript.trim().indexOf("vic")) {
+      else if((timiStatus == 'waiting') && transcript.trim().includes("ispričaj") && transcript.trim().includes("vic")) {
         timiSay("Job interviewer: And where would you see yourself in five years’ time Mr. Jeffries? Mr. Jeffries: Personally I believe my biggest weakness is in listening.")
       }
-      else if((timiStatus == 'waiting') && (transcript.trim().indexOf("kakvo") || transcript.trim().indexOf("kako")) && (transcript.trim().indexOf("vreme") || transcript.trim().indexOf("napolju"))) {
+      else if((timiStatus == 'waiting') && (transcript.trim().includes("kakvo") || transcript.trim().includes("kako")) && (transcript.trim().includes("vreme") || transcript.trim().includes("napolju"))) {
         getWeather();
       }
-      else if((timiStatus == 'waiting') && transcript.trim().indexOf("promeni")  && transcript.trim().indexOf("grad")) {
+      else if((timiStatus == 'waiting') && transcript.trim().includes("promeni")  && transcript.trim().includes("grad")) {
         setCity(searchFormInput.value);
       } 
-      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().indexOf("pauziraj")  && transcript.trim().indexOf("glasovne") && transcript.trim().indexOf("komande")) {
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("pauziraj")  && transcript.trim().includes("glasovne") && transcript.trim().includes("komande")) {
         timiSay("timmiieee")
         timiStatus = 'not-waiting';
       } 
