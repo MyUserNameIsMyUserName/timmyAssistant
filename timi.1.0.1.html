@@ -1,0 +1,515 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+
+<!--TEXT TO SPEECH-->
+<div class=buttons style="opacity: 0; height: 0;">
+	<button id=play></button> &nbsp;
+	<button id=pause></button> &nbsp;
+	<button id=stop></button>
+</div>
+<!--END TEXT TO SPEECH-->
+
+
+<!--VOICE COMMAND-->
+<div class="container">
+  <form action="https://www.google.com/search" method="get" target="_blank" id="search-form">
+    <input id="text-speech-command" name="q" type="text" placeholder="Search Google..." autocomplete="off" autofocus>
+    <!-- <button type="button"><i class="fas fa-microphone"></i></button> -->
+  </form>
+  <p class="info">
+    List of commands: 
+  </p>
+    <ul class='info'>
+      <li><b>'Timi'</b> <= calls assistants name, will set status to waiting[for command]</li>
+      <li><b>'dobar dan'</b> <= just a hello message</li>
+      <li><b>'reset input'</b> <= will reset text it got from speech recognition</li>
+      <li><b>'napusti sobu'</b> <= shut down timi</li>
+      <li>{[grad]}-pauza- <b>'promeni grad'</b> <= will change current/default city</li>
+      <li><b>'kakvo je vreme'</b> || 'kako je napolju' || 'kakvo je vreme napolju' <= get weather for the current city</li>
+      <li><b>'pauzira glasovne komande'</b> <= pause voice commands</li>
+      <li><b>'koliko je sati'</b> <= tells you current time</li>
+      <li><b>'koji je datum'</b> <= current date command</li>
+    </ul>
+</div>
+<!--END VOICE COMMAND-->
+
+
+<style>
+ ul.info {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    list-style: decimal;
+}
+
+ul.info li b {
+    color: white;
+}
+
+ul.info li {
+    color: lightgray;
+    margin: 5px 0;
+    padding: 5px 10px;
+}
+
+ul.info li:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+/*********TEXT TO SPEECH*****/
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+html {
+	font-size: 16pt;
+	font-family: crimson text;
+}
+
+article {
+	width: 60%;
+	margin: auto;
+}
+
+blockquote,
+div,
+h1 {
+	text-align: center;
+}
+
+blockquote {
+	font-size: 1.2rem;
+}
+
+.buttons {
+	margin-top: 25px;
+}
+
+button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	height: 48px;
+	outline: none;
+	padding: 0;
+	width: 48px;
+}
+
+#play {
+	background-image: url(https://rpsthecoder.github.io/js-speech-synthesis/play.svg);
+}
+
+#play.played {
+	background-image: url(https://rpsthecoder.github.io/js-speech-synthesis/play1.svg);
+}
+
+#pause {
+	background-image: url(https://rpsthecoder.github.io/js-speech-synthesis/pause.svg);
+}
+
+#pause.paused {
+	background-image: url(https://rpsthecoder.github.io/js-speech-synthesis/pause1.svg);
+}
+
+#stop {
+	background-image: url(https://rpsthecoder.github.io/js-speech-synthesis/stop.svg);
+}
+
+#stop.stopped {
+	background-image: url(https://rpsthecoder.github.io/js-speech-synthesis/stop1.svg);
+}
+
+@media (max-width: 700px) {
+	html {
+		font-size: 14pt;
+	}
+	article {
+		width: 90%;
+	}
+}
+
+body {
+	margin: 0;
+}
+
+
+/*  demo decor */
+
+#-demo-title {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 36px;
+	background-color: #D5FFD1;
+	color: #0F316C;
+	line-height: 36px;
+	font-weight: bold;
+	font-size: 16pt;
+	text-align: center;
+}
+
+#-demo-profile {
+	float: left;
+	height: 100%;
+	opacity: .4;
+}
+
+#-demo-profile:hover {
+	opacity: 1;
+}
+
+@media (max-width: 400px) {
+	#-demo-title {
+		font-size: 12pt;
+	}
+}
+/*********END TEXT TO SPEECH*****/
+
+/*********VOICE COMMAND*****/
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #025677;
+  color: #fff;
+}
+.container {
+  padding: 30px 50px;
+}
+#search-form {
+  width: 30%;
+  margin: 0 auto;
+  position: relative;
+}
+#search-form input {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+}
+#search-form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: 3rem;
+  text-align: center;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: #333;
+}
+.info {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1200px) {
+  #search-form { width: 50%; }
+}
+@media (max-width: 768px) {
+  .container { padding: 30px 35px; }
+  #search-form { width: 100%; }
+  .info { font-size: 0.5rem; }
+}
+form#search-form {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+#search-form input {
+    background: transparent;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: monospace;
+    border: none;
+}
+
+#search-form input:focus {
+    outline: none;
+}
+
+/*********VOICE COMMAND*****/
+</style>
+
+<script>
+var weatherValue = "";
+var timiStatus = "started";
+var currentCity = "Sombor";
+/*********TEXT TO SPEECH*****/
+onload = function() {
+	if ('speechSynthesis' in window) with(speechSynthesis) {
+
+		var playEle = document.querySelector('#play');
+		var pauseEle = document.querySelector('#pause');
+		var stopEle = document.querySelector('#stop');
+		var flag = false;
+
+		playEle.addEventListener('click', onClickPlay);
+		pauseEle.addEventListener('click', onClickPause);
+		stopEle.addEventListener('click', onClickStop);
+
+		function onClickPlay() {
+			if (!flag) {
+				flag = true;
+				utterance = new SpeechSynthesisUtterance(document.querySelector('#text-speech-command').value.toLowerCase());
+				utterance.voice = getVoices()[4];
+				utterance.onend = function() {
+					flag = false;
+					playEle.className = pauseEle.className = '';
+					stopEle.className = 'stopped';
+				};
+				playEle.className = 'played';
+				stopEle.className = '';
+				speak(utterance);
+			}
+			if (paused) { /* unpause/resume narration */
+				playEle.className = 'played';
+				pauseEle.className = '';
+				resume();
+			}
+		}
+
+		function onClickPause() {
+			if (speaking && !paused) { /* pause narration */
+				pauseEle.className = 'paused';
+				playEle.className = '';
+				pause();
+			}
+		}
+
+		function onClickStop() {
+			if (speaking) { /* stop narration */
+				/* for safari */
+				stopEle.className = 'stopped';
+				playEle.className = pauseEle.className = '';
+				flag = false;
+				cancel();
+
+			}
+		}
+
+	}
+
+	else { /* speech synthesis not supported */
+		msg = document.createElement('h5');
+		msg.textContent = "Detected no support for Speech Synthesis";
+		msg.style.textAlign = 'center';
+		msg.style.backgroundColor = 'red';
+		msg.style.color = 'white';
+		msg.style.marginTop = msg.style.marginBottom = 0;
+		document.body.insertBefore(msg, document.querySelector('div'));
+	}
+
+}
+/*********END TEXT TO SPEECH*****/
+
+var special = ['zeroth','first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth'];
+var deca = ['twent', 'thirt', 'fort', 'fift', 'sixt', 'sevent', 'eight', 'ninet'];
+/*********VOICE COMMAND*****/
+const searchForm = document.querySelector("#search-form");
+const searchFormInput = searchForm.querySelector("input"); // <=> document.querySelector("#search-form input");
+const info = document.querySelector(".info");
+
+// The speech recognition interface lives on the browser’s window object
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; // if none exists -> undefined
+
+if(SpeechRecognition) {
+  console.log("Your Browser supports speech Recognition");
+  
+  const recognition = new SpeechRecognition();
+  recognition.continuous = true;
+  recognition.lang = "sr";
+
+  searchForm.insertAdjacentHTML("beforeend", '<button type="button"><i class="fas fa-microphone"></i></button>');
+  searchFormInput.style.paddingRight = "50px";
+
+  const micBtn = searchForm.querySelector("button");
+  const micIcon = micBtn.firstElementChild;
+
+  micBtn.addEventListener("click", micBtnClick);
+  function micBtnClick() {
+    if(micIcon.classList.contains("fa-microphone")) { // Start Voice Recognition
+      recognition.start(); // First time you have to allow access to mic!
+    }
+    else {
+      recognition.stop();
+    }
+  }
+
+  recognition.addEventListener("start", startSpeechRecognition); // <=> recognition.onstart = function() {...}
+  function startSpeechRecognition() {
+    micIcon.classList.remove("fa-microphone");
+    micIcon.classList.add("fa-microphone-slash");
+    searchFormInput.focus();
+    console.log("Voice activated, SPEAK");
+  }
+
+  recognition.addEventListener("end", endSpeechRecognition); // <=> recognition.onend = function() {...}
+  function endSpeechRecognition() {
+    micIcon.classList.remove("fa-microphone-slash");
+    micIcon.classList.add("fa-microphone");
+    searchFormInput.focus();
+    console.log("Speech recognition service disconnected");
+    if (timiStatus !== "shutdown") {
+      recognition.start(); 
+    }
+  }
+
+  recognition.addEventListener("result", resultOfSpeechRecognition); // <=> recognition.onresult = function(event) {...} - Fires when you stop talking
+  function resultOfSpeechRecognition(event) {
+    const current = event.resultIndex;
+    const transcript = event.results[current][0].transcript.toLowerCase();
+    
+    if((timiStatus == 'waiting') && transcript.trim().includes("napusti") && transcript.trim().includes("sobu")) {
+        timiSay("tiiiIIIIIiiiiimmy tiiiiiimmy tiiiimmy is out")
+        timiStatus = "shutdown";
+        recognition.stop();
+    }
+    else if(!searchFormInput.value) {
+      searchFormInput.value = transcript;
+    }
+    else {
+      if(transcript.toLowerCase().trim()==="pretraga") {
+        timiStatus = "searching";
+        timiSay("timmiieee");
+      }
+      else if((timiStatus == 'waiting') && transcript.toLowerCase().trim()==="reset input") {
+        searchFormInput.value = "";
+      }
+      else if(transcript.includes("timi")) {
+        timiStatus = "waiting";
+        timiSay("timmiieee")
+      }
+      else if((timiStatus == 'waiting') && transcript.trim().includes("dobar") && transcript.trim().includes("dan")) {
+        timiSay("tiiiIIIIIiiiiimmy tiiiiiimmy tiiiimmy")
+      }
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koliko") && transcript.trim().includes("je") && transcript.trim().includes("sati")) {
+        timiSay(timeTimi());
+      }
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("koji") && transcript.trim().includes("je") && transcript.trim().includes("datum")) {        
+        timiSay(dateTimi());
+      }
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("šta") && transcript.trim().includes("radiš")) {
+        if (timiStatus == "waiting"){
+          timiSay("timmiieee aoiblueoyeeooeo timmiieee")
+        } 
+        else if(timiStatus == "searching"){
+          timiSay("timmy find things for master. What does master wish from timmy?");
+        }
+      }
+      else if((timiStatus == 'waiting') && transcript.trim().includes("ispričaj") && transcript.trim().includes("vic")) {
+        timiSay("Job interviewer: And where would you see yourself in five years’ time Mr. Jeffries? Mr. Jeffries: Personally I believe my biggest weakness is in listening.")
+      }
+      else if((timiStatus == 'waiting') && (transcript.trim().includes("kakvo je vreme") || transcript.trim().includes("kako je napolju") || transcript.trim().includes("kakvo je vreme napolju"))) {
+        getWeather();
+      }
+      else if((timiStatus == 'waiting') && transcript.trim().includes("promeni")  && transcript.trim().includes("grad")) {
+        setCity(searchFormInput.value);
+      } 
+      else if(((timiStatus == 'waiting') || (timiStatus == 'searching')) && transcript.trim().includes("pauziraj")  && transcript.trim().includes("glasovne") && transcript.trim().includes("komande")) {
+        timiSay("timmiieee")
+        timiStatus = 'not-waiting';
+      } 
+      else {
+        searchFormInput.value = transcript;
+        if (timiStatus == "searching"){
+          searchForm.submit();
+          timiStatus = "waiting";
+        }
+      }
+    }
+    // searchFormInput.value = transcript;
+    // searchFormInput.focus();
+    // setTimeout(() => {
+    //   searchForm.submit();
+    // }, 500);
+  }
+  
+  //info.textContent = 'Voice Commands: "timi napusti sobu", "reset input", "go", "timi dobar dan", "timi ispričaj nam vic","timi kakvo je vreme", "<(prvo izgovoris grad)> <pauza> promeni grad", "koliko je sati", "koji je datum"';
+  
+}
+else {
+  console.log("Your Browser does not support speech Recognition");
+  info.textContent = "Your Browser does not support Speech Recognition";
+}
+/*********END VOICE COMMAND*****/
+
+function timiSay(message){
+  searchFormInput.value = message;
+  document.querySelector('#play').click();
+}
+
+function getWeather(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        //document.getElementById("demo").innerHTML =
+        console.log(this.responseText);
+        weatherValue = JSON.parse(this.responseText) ;
+        searchFormInput.value = "Weather is "+weatherValue.weather[0].main+", temperature is "+weatherValue.main.temp+" degrees of celsius.";
+        document.querySelector('#play').click();
+        }
+    };
+    xhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?q="+currentCity+"&units=metric&apikey=a785d14928e09081c2176fbc355bcaf8", true);
+    xhttp.send();
+}
+
+function setCity(value){
+    currentCity = value;
+    searchFormInput.value = "Default city changed to "+currentCity ;
+    document.querySelector('#play').click();
+}
+
+function stringifyNumber(n) {
+  if (n < 20) return special[n];
+  if (n%10 === 0) return deca[Math.floor(n/10)-2] + 'ieth';
+  return deca[Math.floor(n/10)-2] + 'y-' + special[n%10];
+}
+
+function dateTimi(){
+  var today = new Date();
+  var a = (today.getMonth()+1);
+  var b = "";
+  switch(a){
+    case 1: b = "January";
+        break;
+    case 2: b = "February";
+        break;
+    case 3: b = "March";
+        break;
+    case 4: b = "April";
+        break;
+    case 5: b = "May";
+        break;
+    case 6: b = "June"; 
+        break;
+    case 7: b = "July";
+        break;
+    case 8: b = "August";
+        break;
+    case 9: b = "September";
+        break;
+    case 10: b = "October";
+        break;
+    case 11: b = "November";
+        break;
+    case 12: b = "December";
+        break;
+    }
+  var date = b+' '+stringifyNumber(today.getDate())+' year '+today.getFullYear();
+  return date;
+}
+
+function timeTimi(){
+  var today = new Date();
+  var time = today.getHours() + " Hours " + today.getMinutes() + " Minutes";
+  return time;
+}
+</script>
